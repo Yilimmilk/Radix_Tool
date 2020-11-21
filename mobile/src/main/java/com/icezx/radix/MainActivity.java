@@ -3,7 +3,10 @@ package com.icezx.radix;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.InputType;
@@ -41,12 +44,17 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
 
     private int select = 10;
     private int digit = 5;
+    private int colorAccentInt;
+
+    private String BUILDTIME = BuildConfig.BUILD_TIME;
 
     //OnCreate方法
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        colorAccentInt = getColor(R.color.colorAccent);
 
         rdb2 = findViewById(R.id.rdb_2);
         rdb8 = findViewById(R.id.rdb_8);
@@ -135,21 +143,37 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
 
         //默认十进制状态下所有按键的激活状态
         bt0.setEnabled(true);
+        bt0.setTextColor(colorAccentInt);
         bt1.setEnabled(true);
+        bt1.setTextColor(colorAccentInt);
         bt2.setEnabled(true);
+        bt2.setTextColor(colorAccentInt);
         bt3.setEnabled(true);
+        bt3.setTextColor(colorAccentInt);
         bt4.setEnabled(true);
+        bt4.setTextColor(colorAccentInt);
         bt5.setEnabled(true);
+        bt5.setTextColor(colorAccentInt);
         bt6.setEnabled(true);
+        bt6.setTextColor(colorAccentInt);
         bt7.setEnabled(true);
+        bt7.setTextColor(colorAccentInt);
         bt8.setEnabled(true);
+        bt8.setTextColor(colorAccentInt);
         bt9.setEnabled(true);
+        bt9.setTextColor(colorAccentInt);
         bta.setEnabled(false);
+        bta.setTextColor(Color.GRAY);
         btb.setEnabled(false);
+        btb.setTextColor(Color.GRAY);
         btc.setEnabled(false);
+        btc.setTextColor(Color.GRAY);
         btd.setEnabled(false);
+        btd.setTextColor(Color.GRAY);
         bte.setEnabled(false);
+        bte.setTextColor(Color.GRAY);
         btf.setEnabled(false);
+        btf.setTextColor(Color.GRAY);
 
         //SharedPreference用来储存设置
         SharedPreferences settings = getSharedPreferences("setting", MODE_PRIVATE);
@@ -235,21 +259,37 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
                     initRadix(number);
 
                     bt0.setEnabled(true);
+                    bt0.setTextColor(colorAccentInt);
                     bt1.setEnabled(true);
+                    bt0.setTextColor(colorAccentInt);
                     bt2.setEnabled(false);
+                    bt2.setTextColor(Color.GRAY);
                     bt3.setEnabled(false);
+                    bt3.setTextColor(Color.GRAY);
                     bt4.setEnabled(false);
+                    bt4.setTextColor(Color.GRAY);
                     bt5.setEnabled(false);
+                    bt5.setTextColor(Color.GRAY);
                     bt6.setEnabled(false);
+                    bt6.setTextColor(Color.GRAY);
                     bt7.setEnabled(false);
+                    bt7.setTextColor(Color.GRAY);
                     bt8.setEnabled(false);
+                    bt8.setTextColor(Color.GRAY);
                     bt9.setEnabled(false);
+                    bt9.setTextColor(Color.GRAY);
                     bta.setEnabled(false);
+                    bta.setTextColor(Color.GRAY);
                     btb.setEnabled(false);
+                    btb.setTextColor(Color.GRAY);
                     btc.setEnabled(false);
+                    btc.setTextColor(Color.GRAY);
                     btd.setEnabled(false);
+                    btd.setTextColor(Color.GRAY);
                     bte.setEnabled(false);
+                    bte.setTextColor(Color.GRAY);
                     btf.setEnabled(false);
+                    btf.setTextColor(Color.GRAY);
                     Log.d("", "" + select);
                 }
                 break;
@@ -261,21 +301,37 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
                     initRadix(number);
 
                     bt0.setEnabled(true);
+                    bt0.setTextColor(colorAccentInt);
                     bt1.setEnabled(true);
+                    bt1.setTextColor(colorAccentInt);
                     bt2.setEnabled(true);
+                    bt2.setTextColor(colorAccentInt);
                     bt3.setEnabled(true);
+                    bt3.setTextColor(colorAccentInt);
                     bt4.setEnabled(true);
+                    bt4.setTextColor(colorAccentInt);
                     bt5.setEnabled(true);
+                    bt5.setTextColor(colorAccentInt);
                     bt6.setEnabled(true);
+                    bt6.setTextColor(colorAccentInt);
                     bt7.setEnabled(true);
+                    bt7.setTextColor(colorAccentInt);
                     bt8.setEnabled(false);
+                    bt8.setTextColor(Color.GRAY);
                     bt9.setEnabled(false);
+                    bt9.setTextColor(Color.GRAY);
                     bta.setEnabled(false);
+                    bta.setTextColor(Color.GRAY);
                     btb.setEnabled(false);
+                    btb.setTextColor(Color.GRAY);
                     btc.setEnabled(false);
+                    btc.setTextColor(Color.GRAY);
                     btd.setEnabled(false);
+                    btd.setTextColor(Color.GRAY);
                     bte.setEnabled(false);
+                    bte.setTextColor(Color.GRAY);
                     btf.setEnabled(false);
+                    btf.setTextColor(Color.GRAY);
                     Log.d("", "" + select);
                 }
                 break;
@@ -287,21 +343,37 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
                     initRadix(number);
 
                     bt0.setEnabled(true);
+                    bt0.setTextColor(colorAccentInt);
                     bt1.setEnabled(true);
+                    bt1.setTextColor(colorAccentInt);
                     bt2.setEnabled(true);
+                    bt2.setTextColor(colorAccentInt);
                     bt3.setEnabled(true);
+                    bt3.setTextColor(colorAccentInt);
                     bt4.setEnabled(true);
+                    bt4.setTextColor(colorAccentInt);
                     bt5.setEnabled(true);
+                    bt5.setTextColor(colorAccentInt);
                     bt6.setEnabled(true);
+                    bt6.setTextColor(colorAccentInt);
                     bt7.setEnabled(true);
+                    bt7.setTextColor(colorAccentInt);
                     bt8.setEnabled(true);
+                    bt8.setTextColor(colorAccentInt);
                     bt9.setEnabled(true);
+                    bt9.setTextColor(colorAccentInt);
                     bta.setEnabled(false);
+                    bta.setTextColor(Color.GRAY);
                     btb.setEnabled(false);
+                    btb.setTextColor(Color.GRAY);
                     btc.setEnabled(false);
+                    btc.setTextColor(Color.GRAY);
                     btd.setEnabled(false);
+                    btd.setTextColor(Color.GRAY);
                     bte.setEnabled(false);
+                    bte.setTextColor(Color.GRAY);
                     btf.setEnabled(false);
+                    btf.setTextColor(Color.GRAY);
                     Log.d("", "" + select);
                 }
                 break;
@@ -313,21 +385,37 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
                     initRadix(number);
 
                     bt0.setEnabled(true);
+                    bt0.setTextColor(colorAccentInt);
                     bt1.setEnabled(true);
+                    bt1.setTextColor(colorAccentInt);
                     bt2.setEnabled(true);
+                    bt2.setTextColor(colorAccentInt);
                     bt3.setEnabled(true);
+                    bt3.setTextColor(colorAccentInt);
                     bt4.setEnabled(true);
+                    bt4.setTextColor(colorAccentInt);
                     bt5.setEnabled(true);
+                    bt5.setTextColor(colorAccentInt);
                     bt6.setEnabled(true);
+                    bt6.setTextColor(colorAccentInt);
                     bt7.setEnabled(true);
+                    bt7.setTextColor(colorAccentInt);
                     bt8.setEnabled(true);
+                    bt8.setTextColor(colorAccentInt);
                     bt9.setEnabled(true);
+                    bt9.setTextColor(colorAccentInt);
                     bta.setEnabled(true);
+                    bta.setTextColor(colorAccentInt);
                     btb.setEnabled(true);
+                    btb.setTextColor(colorAccentInt);
                     btc.setEnabled(true);
+                    btc.setTextColor(colorAccentInt);
                     btd.setEnabled(true);
+                    btd.setTextColor(colorAccentInt);
                     bte.setEnabled(true);
+                    bte.setTextColor(colorAccentInt);
                     btf.setEnabled(true);
+                    btf.setTextColor(colorAccentInt);
                     Log.d("", "" + select);
                 }
                 break;
@@ -479,24 +567,24 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
 
             case R.id.menu_2:
                 new AlertDialog.Builder(this).setTitle("关于")
-                        .setMessage("一个简单的支持四种进制转换的工具\n" + "由Java语言编写\n" + "仅供学习\n" + "\nAuthor:Yili" )
+                        .setMessage("一个简单的支持四种进制转换的工具\n" + "算法练手项目\n" + "仅供学习\n\n" + "Author:Yili\n" + "编译时间:" + BUILDTIME)
                         .setPositiveButton("确定", null)
-//                        .setNegativeButton("个人网盘", new DialogInterface.OnClickListener() {
-//                            @Override
-//                            public void onClick(DialogInterface dialogInterface, int i) {
-//                                Uri uri = Uri.parse("https://cloud.icezx.com");
-//                                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-//                                startActivity(intent);
-//                            }
-//                        })
-//                        .setNeutralButton("个人网站", new DialogInterface.OnClickListener() {
-//                            @Override
-//                            public void onClick(DialogInterface dialogInterface, int i) {
-//                                Uri uri = Uri.parse("https://www.icezx.com");
-//                                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-//                                startActivity(intent);
-//                            }
-//                        })
+                        .setNegativeButton("博客", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                Uri uri = Uri.parse("https://blog.treeoncloud.com");
+                                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                                startActivity(intent);
+                            }
+                        })
+                        .setNeutralButton("主页", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                Uri uri = Uri.parse("https://mapotofu.cn");
+                                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                                startActivity(intent);
+                            }
+                        })
                         .show();
                 break;
         }

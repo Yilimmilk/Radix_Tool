@@ -1,15 +1,16 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 29
+    compileSdkVersion 30
     buildToolsVersion "29.0.2"
     defaultConfig {
         applicationId "com.icezx.radix"
         minSdkVersion 23
-        targetSdkVersion 29
+        targetSdkVersion 30
         versionCode 23
         versionName "2.3"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField "String", "BUILD_TIME", getBuildDate()
     }
     buildTypes {
         release {
@@ -17,6 +18,11 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+}
+
+String getBuildDate() {
+    Date date = new Date();
+    return date.format("\"" + date.format("yyyy-MM-dd HH:mm") + "\"", TimeZone.getTimeZone("UTC"));
 }
 
 dependencies {
