@@ -7,8 +7,8 @@ android {
         applicationId "com.icezx.radix"
         minSdkVersion 23
         targetSdkVersion 30
-        versionCode 23
-        versionName "2.3"
+        versionCode 25
+        versionName "2.5"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         buildConfigField "String", "BUILD_TIME", getBuildDate()
     }
@@ -17,6 +17,10 @@ android {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+    }
+    packagingOptions {
+        exclude 'classes.dex'
+        exclude '**.**'
     }
 }
 
