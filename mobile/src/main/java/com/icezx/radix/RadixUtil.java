@@ -155,13 +155,48 @@ public class RadixUtil {
 		if(data.split("\\.").length > 2){
 			return false;
 		}
-		for(int i = 0;i<data.length();i++){
+		for (int i = 0; i < data.length(); i++) {
 			char digit = data.charAt(i);
 			int index = digits.indexOf(digit);
-			if(index == -1 || index > radix ){
+			if (index == -1 || index > radix) {
 				return false;
 			}
 		}
 		return true;
+	}
+
+	/*
+	 * 	第二种方法模拟人工算术
+	 *  用来将正数或者负数十进制转换为其他进制数
+	 * */
+	public static String secDecToBin(int num) {
+		//定义字符串，用来存放计算出来的二进制数据
+		StringBuffer sb = new StringBuffer();
+		while (num != 0) {
+			//向字符串中添加计算出来的二进制数
+			sb.append(num & 1);
+			//对num进行无符号位运算，类似于除2运算，具体的区别还需要读者自己查找
+			num = num >>> 1;
+		}
+		//将字符串反序返回
+		return sb.reverse().toString();
+	}
+
+	public static String secDecToOctal(int num) {
+		StringBuffer sb = new StringBuffer();
+		while (num != 0) {
+			sb.append(num & 7);
+			num = num >>> 3;
+		}
+		return sb.reverse().toString();
+	}
+
+	public static String secDecToHex(int num) {
+		StringBuffer sb = new StringBuffer();
+		while (num != 0) {
+			sb.append(num & 15);
+			num = num >>> 4;
+		}
+		return sb.reverse().toString();
 	}
 }
