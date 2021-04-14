@@ -8,6 +8,7 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextUtils;
@@ -16,10 +17,14 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
@@ -27,18 +32,23 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.snackbar.Snackbar;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
+
 /**
  * @author Yili <miaococoo@gmail.com>
  * @date 2019/07/07
  */
 
-public class MainActivity extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener, View.OnClickListener {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     //声明所有组件
-    private RadioButton rdb2, rdb8, rdb10, rdb16;
     private EditText etText, et2, et8, et10, et16;
     private Button btDel;
     private Button bt1, bt2, bt3, bt4, bt5, bt6, bt7, bt8, bt9, bt0, bta, btb, btc, btd, bte, btf, btPoint;
+    private Spinner spScale;
 
     private SharedPreferences.Editor editor;
 
@@ -48,6 +58,10 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
 
     private String BUILDTIME = BuildConfig.BUILD_TIME;
 
+    private ArrayAdapter<String> adapter;
+    private List<String> allItems;
+    private String[] scaleList = { "十六进制", "十进制", "八进制", "二进制" };
+
     //OnCreate方法
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,10 +70,191 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
 
         colorAccentInt = getColor(R.color.colorAccent);
 
-        rdb2 = findViewById(R.id.rdb_2);
-        rdb8 = findViewById(R.id.rdb_8);
-        rdb10 = findViewById(R.id.rdb_10);
-        rdb16 = findViewById(R.id.rdb_16);
+        spScale = findViewById(R.id.spinner_scale);
+        allItems = new ArrayList<String>();
+        for (int i = 0; i < scaleList.length; i++) {
+            allItems.add(scaleList[i]);
+        }
+
+        adapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, allItems);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spScale.setAdapter(adapter);
+        spScale.setOnItemSelectedListener(new Spinner.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                String number;
+                switch (i){
+                    case 0:
+                        select = 16;
+                        number = etText.getText().toString();
+                        initRadix(number);
+
+                        bt0.setEnabled(true);
+                        bt0.setTextColor(colorAccentInt);
+                        bt1.setEnabled(true);
+                        bt1.setTextColor(colorAccentInt);
+                        bt2.setEnabled(true);
+                        bt2.setTextColor(colorAccentInt);
+                        bt3.setEnabled(true);
+                        bt3.setTextColor(colorAccentInt);
+                        bt4.setEnabled(true);
+                        bt4.setTextColor(colorAccentInt);
+                        bt5.setEnabled(true);
+                        bt5.setTextColor(colorAccentInt);
+                        bt6.setEnabled(true);
+                        bt6.setTextColor(colorAccentInt);
+                        bt7.setEnabled(true);
+                        bt7.setTextColor(colorAccentInt);
+                        bt8.setEnabled(true);
+                        bt8.setTextColor(colorAccentInt);
+                        bt9.setEnabled(true);
+                        bt9.setTextColor(colorAccentInt);
+                        bta.setEnabled(true);
+                        bta.setTextColor(colorAccentInt);
+                        btb.setEnabled(true);
+                        btb.setTextColor(colorAccentInt);
+                        btc.setEnabled(true);
+                        btc.setTextColor(colorAccentInt);
+                        btd.setEnabled(true);
+                        btd.setTextColor(colorAccentInt);
+                        bte.setEnabled(true);
+                        bte.setTextColor(colorAccentInt);
+                        btf.setEnabled(true);
+                        btf.setTextColor(colorAccentInt);
+                        Log.d("当前选择了", select + "进制");
+                        break;
+
+                    case 1:
+                        select = 10;
+                        number = etText.getText().toString();
+                        initRadix(number);
+
+                        bt0.setEnabled(true);
+                        bt0.setTextColor(colorAccentInt);
+                        bt1.setEnabled(true);
+                        bt1.setTextColor(colorAccentInt);
+                        bt2.setEnabled(true);
+                        bt2.setTextColor(colorAccentInt);
+                        bt3.setEnabled(true);
+                        bt3.setTextColor(colorAccentInt);
+                        bt4.setEnabled(true);
+                        bt4.setTextColor(colorAccentInt);
+                        bt5.setEnabled(true);
+                        bt5.setTextColor(colorAccentInt);
+                        bt6.setEnabled(true);
+                        bt6.setTextColor(colorAccentInt);
+                        bt7.setEnabled(true);
+                        bt7.setTextColor(colorAccentInt);
+                        bt8.setEnabled(true);
+                        bt8.setTextColor(colorAccentInt);
+                        bt9.setEnabled(true);
+                        bt9.setTextColor(colorAccentInt);
+                        bta.setEnabled(false);
+                        bta.setTextColor(Color.GRAY);
+                        btb.setEnabled(false);
+                        btb.setTextColor(Color.GRAY);
+                        btc.setEnabled(false);
+                        btc.setTextColor(Color.GRAY);
+                        btd.setEnabled(false);
+                        btd.setTextColor(Color.GRAY);
+                        bte.setEnabled(false);
+                        bte.setTextColor(Color.GRAY);
+                        btf.setEnabled(false);
+                        btf.setTextColor(Color.GRAY);
+                        Log.d("当前选择了", select + "进制");
+                        break;
+
+                    case 2:
+                        select = 8;
+                        number = etText.getText().toString();
+                        initRadix(number);
+
+                        bt0.setEnabled(true);
+                        bt0.setTextColor(colorAccentInt);
+                        bt1.setEnabled(true);
+                        bt1.setTextColor(colorAccentInt);
+                        bt2.setEnabled(true);
+                        bt2.setTextColor(colorAccentInt);
+                        bt3.setEnabled(true);
+                        bt3.setTextColor(colorAccentInt);
+                        bt4.setEnabled(true);
+                        bt4.setTextColor(colorAccentInt);
+                        bt5.setEnabled(true);
+                        bt5.setTextColor(colorAccentInt);
+                        bt6.setEnabled(true);
+                        bt6.setTextColor(colorAccentInt);
+                        bt7.setEnabled(true);
+                        bt7.setTextColor(colorAccentInt);
+                        bt8.setEnabled(false);
+                        bt8.setTextColor(Color.GRAY);
+                        bt9.setEnabled(false);
+                        bt9.setTextColor(Color.GRAY);
+                        bta.setEnabled(false);
+                        bta.setTextColor(Color.GRAY);
+                        btb.setEnabled(false);
+                        btb.setTextColor(Color.GRAY);
+                        btc.setEnabled(false);
+                        btc.setTextColor(Color.GRAY);
+                        btd.setEnabled(false);
+                        btd.setTextColor(Color.GRAY);
+                        bte.setEnabled(false);
+                        bte.setTextColor(Color.GRAY);
+                        btf.setEnabled(false);
+                        btf.setTextColor(Color.GRAY);
+                        Log.d("当前选择了", select + "进制");
+                        break;
+
+                    case 3:
+                        select = 2;
+                        number = etText.getText().toString();
+                        initRadix(number);
+
+                        bt0.setEnabled(true);
+                        bt0.setTextColor(colorAccentInt);
+                        bt1.setEnabled(true);
+                        bt0.setTextColor(colorAccentInt);
+                        bt2.setEnabled(false);
+                        bt2.setTextColor(Color.GRAY);
+                        bt3.setEnabled(false);
+                        bt3.setTextColor(Color.GRAY);
+                        bt4.setEnabled(false);
+                        bt4.setTextColor(Color.GRAY);
+                        bt5.setEnabled(false);
+                        bt5.setTextColor(Color.GRAY);
+                        bt6.setEnabled(false);
+                        bt6.setTextColor(Color.GRAY);
+                        bt7.setEnabled(false);
+                        bt7.setTextColor(Color.GRAY);
+                        bt8.setEnabled(false);
+                        bt8.setTextColor(Color.GRAY);
+                        bt9.setEnabled(false);
+                        bt9.setTextColor(Color.GRAY);
+                        bta.setEnabled(false);
+                        bta.setTextColor(Color.GRAY);
+                        btb.setEnabled(false);
+                        btb.setTextColor(Color.GRAY);
+                        btc.setEnabled(false);
+                        btc.setTextColor(Color.GRAY);
+                        btd.setEnabled(false);
+                        btd.setTextColor(Color.GRAY);
+                        bte.setEnabled(false);
+                        bte.setTextColor(Color.GRAY);
+                        btf.setEnabled(false);
+                        btf.setTextColor(Color.GRAY);
+                        Log.d("当前选择了", select + "进制");
+                        break;
+
+                    default:
+                        break;
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> arg0) {
+            }
+        });
+
+
         etText = findViewById(R.id.et_text);
         et2 = findViewById(R.id.et_2);
         et8 = findViewById(R.id.et_8);
@@ -84,15 +279,12 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
         btPoint = findViewById(R.id.bt_point);
         btDel = findViewById(R.id.bt_del);
 
-        rdb2.setOnCheckedChangeListener(this);
-        rdb8.setOnCheckedChangeListener(this);
-        rdb10.setOnCheckedChangeListener(this);
-        rdb16.setOnCheckedChangeListener(this);
-
+        etText.setInputType(InputType.TYPE_NULL);
         et2.setOnClickListener(this);
         et8.setOnClickListener(this);
         et10.setOnClickListener(this);
         et16.setOnClickListener(this);
+
         bt1.setOnClickListener(this);
         bt2.setOnClickListener(this);
         bt3.setOnClickListener(this);
@@ -136,6 +328,14 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
         btDel.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
+                btDel.setText("已删除");
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        btDel.setText("退格");
+                    }
+                },2000);
+
                 etText.setText("");
                 return false;
             }
@@ -248,180 +448,6 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
         return result;
     }
 
-    //进制按钮设置监听
-    @Override
-    public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-        switch (compoundButton.getId()) {
-            case R.id.rdb_2:
-                if (rdb2.isChecked()) {
-                    select = 2;
-                    String number = etText.getText().toString();
-                    initRadix(number);
-
-                    bt0.setEnabled(true);
-                    bt0.setTextColor(colorAccentInt);
-                    bt1.setEnabled(true);
-                    bt0.setTextColor(colorAccentInt);
-                    bt2.setEnabled(false);
-                    bt2.setTextColor(Color.GRAY);
-                    bt3.setEnabled(false);
-                    bt3.setTextColor(Color.GRAY);
-                    bt4.setEnabled(false);
-                    bt4.setTextColor(Color.GRAY);
-                    bt5.setEnabled(false);
-                    bt5.setTextColor(Color.GRAY);
-                    bt6.setEnabled(false);
-                    bt6.setTextColor(Color.GRAY);
-                    bt7.setEnabled(false);
-                    bt7.setTextColor(Color.GRAY);
-                    bt8.setEnabled(false);
-                    bt8.setTextColor(Color.GRAY);
-                    bt9.setEnabled(false);
-                    bt9.setTextColor(Color.GRAY);
-                    bta.setEnabled(false);
-                    bta.setTextColor(Color.GRAY);
-                    btb.setEnabled(false);
-                    btb.setTextColor(Color.GRAY);
-                    btc.setEnabled(false);
-                    btc.setTextColor(Color.GRAY);
-                    btd.setEnabled(false);
-                    btd.setTextColor(Color.GRAY);
-                    bte.setEnabled(false);
-                    bte.setTextColor(Color.GRAY);
-                    btf.setEnabled(false);
-                    btf.setTextColor(Color.GRAY);
-                    Log.d("", "" + select);
-                }
-                break;
-
-            case R.id.rdb_8:
-                if (rdb8.isChecked()) {
-                    select = 8;
-                    String number = etText.getText().toString();
-                    initRadix(number);
-
-                    bt0.setEnabled(true);
-                    bt0.setTextColor(colorAccentInt);
-                    bt1.setEnabled(true);
-                    bt1.setTextColor(colorAccentInt);
-                    bt2.setEnabled(true);
-                    bt2.setTextColor(colorAccentInt);
-                    bt3.setEnabled(true);
-                    bt3.setTextColor(colorAccentInt);
-                    bt4.setEnabled(true);
-                    bt4.setTextColor(colorAccentInt);
-                    bt5.setEnabled(true);
-                    bt5.setTextColor(colorAccentInt);
-                    bt6.setEnabled(true);
-                    bt6.setTextColor(colorAccentInt);
-                    bt7.setEnabled(true);
-                    bt7.setTextColor(colorAccentInt);
-                    bt8.setEnabled(false);
-                    bt8.setTextColor(Color.GRAY);
-                    bt9.setEnabled(false);
-                    bt9.setTextColor(Color.GRAY);
-                    bta.setEnabled(false);
-                    bta.setTextColor(Color.GRAY);
-                    btb.setEnabled(false);
-                    btb.setTextColor(Color.GRAY);
-                    btc.setEnabled(false);
-                    btc.setTextColor(Color.GRAY);
-                    btd.setEnabled(false);
-                    btd.setTextColor(Color.GRAY);
-                    bte.setEnabled(false);
-                    bte.setTextColor(Color.GRAY);
-                    btf.setEnabled(false);
-                    btf.setTextColor(Color.GRAY);
-                    Log.d("", "" + select);
-                }
-                break;
-
-            case R.id.rdb_10:
-                if (rdb10.isChecked()) {
-                    select = 10;
-                    String number = etText.getText().toString();
-                    initRadix(number);
-
-                    bt0.setEnabled(true);
-                    bt0.setTextColor(colorAccentInt);
-                    bt1.setEnabled(true);
-                    bt1.setTextColor(colorAccentInt);
-                    bt2.setEnabled(true);
-                    bt2.setTextColor(colorAccentInt);
-                    bt3.setEnabled(true);
-                    bt3.setTextColor(colorAccentInt);
-                    bt4.setEnabled(true);
-                    bt4.setTextColor(colorAccentInt);
-                    bt5.setEnabled(true);
-                    bt5.setTextColor(colorAccentInt);
-                    bt6.setEnabled(true);
-                    bt6.setTextColor(colorAccentInt);
-                    bt7.setEnabled(true);
-                    bt7.setTextColor(colorAccentInt);
-                    bt8.setEnabled(true);
-                    bt8.setTextColor(colorAccentInt);
-                    bt9.setEnabled(true);
-                    bt9.setTextColor(colorAccentInt);
-                    bta.setEnabled(false);
-                    bta.setTextColor(Color.GRAY);
-                    btb.setEnabled(false);
-                    btb.setTextColor(Color.GRAY);
-                    btc.setEnabled(false);
-                    btc.setTextColor(Color.GRAY);
-                    btd.setEnabled(false);
-                    btd.setTextColor(Color.GRAY);
-                    bte.setEnabled(false);
-                    bte.setTextColor(Color.GRAY);
-                    btf.setEnabled(false);
-                    btf.setTextColor(Color.GRAY);
-                    Log.d("", "" + select);
-                }
-                break;
-
-            case R.id.rdb_16:
-                if (rdb16.isChecked()) {
-                    select = 16;
-                    String number = etText.getText().toString();
-                    initRadix(number);
-
-                    bt0.setEnabled(true);
-                    bt0.setTextColor(colorAccentInt);
-                    bt1.setEnabled(true);
-                    bt1.setTextColor(colorAccentInt);
-                    bt2.setEnabled(true);
-                    bt2.setTextColor(colorAccentInt);
-                    bt3.setEnabled(true);
-                    bt3.setTextColor(colorAccentInt);
-                    bt4.setEnabled(true);
-                    bt4.setTextColor(colorAccentInt);
-                    bt5.setEnabled(true);
-                    bt5.setTextColor(colorAccentInt);
-                    bt6.setEnabled(true);
-                    bt6.setTextColor(colorAccentInt);
-                    bt7.setEnabled(true);
-                    bt7.setTextColor(colorAccentInt);
-                    bt8.setEnabled(true);
-                    bt8.setTextColor(colorAccentInt);
-                    bt9.setEnabled(true);
-                    bt9.setTextColor(colorAccentInt);
-                    bta.setEnabled(true);
-                    bta.setTextColor(colorAccentInt);
-                    btb.setEnabled(true);
-                    btb.setTextColor(colorAccentInt);
-                    btc.setEnabled(true);
-                    btc.setTextColor(colorAccentInt);
-                    btd.setEnabled(true);
-                    btd.setTextColor(colorAccentInt);
-                    bte.setEnabled(true);
-                    bte.setTextColor(colorAccentInt);
-                    btf.setEnabled(true);
-                    btf.setTextColor(colorAccentInt);
-                    Log.d("", "" + select);
-                }
-                break;
-        }
-    }
-
     //文本框和按钮设置监听
     @Override
     public void onClick(View view) {
@@ -452,10 +478,12 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
                 break;
 
             case R.id.bt_point:
+                etText.requestFocus();
                 etText.setText(etText.getText() + ".");
                 break;
 
             case R.id.bt_del:
+                etText.requestFocus();
                 if (!TextUtils.isEmpty(etText.getText().toString())) {
                     String str = etText.getText().toString();
                     etText.setText(str.substring(0, str.length() - 1));
@@ -463,66 +491,82 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
                 break;
 
             case R.id.bt_0:
+                etText.requestFocus();
                 etText.setText(etText.getText() + "0");
                 break;
 
             case R.id.bt_1:
+                etText.requestFocus();
                 etText.setText(etText.getText() + "1");
                 break;
 
             case R.id.bt_2:
+                etText.requestFocus();
                 etText.setText(etText.getText() + "2");
                 break;
 
             case R.id.bt_3:
+                etText.requestFocus();
                 etText.setText(etText.getText() + "3");
                 break;
 
             case R.id.bt_4:
+                etText.requestFocus();
                 etText.setText(etText.getText() + "4");
                 break;
 
             case R.id.bt_5:
+                etText.requestFocus();
                 etText.setText(etText.getText() + "5");
                 break;
 
             case R.id.bt_6:
+                etText.requestFocus();
                 etText.setText(etText.getText() + "6");
                 break;
 
             case R.id.bt_7:
+                etText.requestFocus();
                 etText.setText(etText.getText() + "7");
                 break;
 
             case R.id.bt_8:
+                etText.requestFocus();
                 etText.setText(etText.getText() + "8");
                 break;
 
             case R.id.bt_9:
+                etText.requestFocus();
                 etText.setText(etText.getText() + "9");
                 break;
 
             case R.id.bt_a:
+                etText.requestFocus();
                 etText.setText(etText.getText() + "A");
                 break;
 
             case R.id.bt_b:
+                etText.requestFocus();
                 etText.setText(etText.getText() + "B");
                 break;
 
             case R.id.bt_c:
+                etText.requestFocus();
                 etText.setText(etText.getText() + "C");
                 break;
 
             case R.id.bt_d:
+                etText.requestFocus();
                 etText.setText(etText.getText() + "D");
                 break;
 
             case R.id.bt_e:
+                etText.requestFocus();
                 etText.setText(etText.getText() + "E");
                 break;
 
             case R.id.bt_f:
+                etText.requestFocus();
                 etText.setText(etText.getText() + "F");
                 break;
         }
@@ -567,7 +611,8 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
 
             case R.id.menu_2:
                 new AlertDialog.Builder(this).setTitle("关于")
-                        .setMessage("一个简单的支持四种进制转换的工具\n" + "算法练手项目\n" + "仅供学习\n\n" + "Author:Yili\n" + "编译时间:" + BUILDTIME)
+                        .setIcon(getResources().getDrawable(R.mipmap.ic_launcher))
+                        .setMessage("一个简单的支持四种进制转换的工具\n" + "算法练手项目\n\n" + "Author:计科2010易立\n" + "编译时间:" + BUILDTIME)
                         .setPositiveButton("确定", null)
                         .setNegativeButton("博客", new DialogInterface.OnClickListener() {
                             @Override

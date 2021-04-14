@@ -7,8 +7,8 @@ android {
         applicationId "com.icezx.radix"
         minSdkVersion 23
         targetSdkVersion 30
-        versionCode 25
-        versionName "2.5"
+        versionCode 26
+        versionName "3.1文化艺术节版"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         buildConfigField "String", "BUILD_TIME", getBuildDate()
     }

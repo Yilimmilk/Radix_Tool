@@ -7,221 +7,203 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardviewlinearLayout1"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="30dp"
-            app:cardCornerRadius="2dp"
-            app:cardElevation="4dp"
-            app:contentPadding="10dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:layout_height="wrap_content">
 
-            <LinearLayout
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardviewlinearLayout1"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="30dp"
+                app:cardCornerRadius="2dp"
+                app:cardElevation="4dp"
+                app:contentPadding="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-                <TextView
-                    android:id="@+id/textView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="当前进制:"
-                    android:textStyle="bold"
-                    android:textSize="18sp" />
-
-                <RadioGroup
-                    android:id="@+id/rdg_first"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
 
-                    <RadioButton
-                        android:id="@+id/rdb_16"
+                    <TextView
+                        android:id="@+id/textView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="十六进制" />
+                        android:text="当前进制:"
+                        android:textStyle="bold"
+                        android:textSize="18sp" />
 
-                    <RadioButton
-                        android:id="@+id/rdb_10"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:checked="true"
-                        android:text="十进制" />
+<!--                    <RadioGroup-->
+<!--                        android:id="@+id/rdg_first"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:orientation="horizontal">-->
 
-                    <RadioButton
-                        android:id="@+id/rdb_8"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="八进制" />
+<!--                        <RadioButton-->
+<!--                            android:id="@+id/rdb_16"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_weight="1"-->
+<!--                            android:text="十六进制" />-->
 
-                    <RadioButton
-                        android:id="@+id/rdb_2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="二进制" />
+<!--                        <RadioButton-->
+<!--                            android:id="@+id/rdb_10"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_weight="1"-->
+<!--                            android:checked="true"-->
+<!--                            android:text="十进制" />-->
 
-                </RadioGroup>
+<!--                        <RadioButton-->
+<!--                            android:id="@+id/rdb_8"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_weight="1"-->
+<!--                            android:text="八进制" />-->
 
-                <EditText
-                    android:id="@+id/et_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:focusable="false"
-                    android:hint="请在下方键盘输入要转换的数字" />
+<!--                        <RadioButton-->
+<!--                            android:id="@+id/rdb_2"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_weight="1"-->
+<!--                            android:text="二进制" />-->
 
-            </LinearLayout>
+<!--                    </RadioGroup>-->
 
-        </androidx.cardview.widget.CardView>
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardviewlinearLayout2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="30dp"
-            android:layout_marginBottom="5dp"
-            app:cardCornerRadius="2dp"
-            app:cardElevation="4dp"
-            app:contentPadding="10dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cardviewlinearLayout1">
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/textInputLayout"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintEnd_toStartOf="@+id/spinner_scale"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
 
-            <LinearLayout
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/et_text"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="待转换数字">
+                            </com.google.android.material.textfield.TextInputEditText>
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <androidx.appcompat.widget.AppCompatSpinner
+                            android:id="@+id/spinner_scale"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardviewlinearLayout2"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/textView3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="结果值:"
-                    android:textStyle="bold"
-                    android:textSize="18sp" />
-
-                <LinearLayout
-                    android:id="@+id/ll16"
-                    android:layout_width="match_parent"
-                    android:layout_height="42dp"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/textView6"
-                        android:layout_width="46dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="十六进制:" />
-
-                    <EditText
-                        android:id="@+id/et_16"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:clickable="true"
-                        android:ems="10"
-                        android:focusableInTouchMode="false"
-                        android:hint="Hex"
-                        android:inputType="textPersonName" />
-                </LinearLayout>
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginBottom="5dp"
+                app:cardCornerRadius="2dp"
+                app:cardElevation="4dp"
+                app:contentPadding="10dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardviewlinearLayout1">
 
                 <LinearLayout
-                    android:id="@+id/ll10"
                     android:layout_width="match_parent"
-                    android:layout_height="42dp"
-                    android:orientation="horizontal">
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/textView5"
+                        android:id="@+id/textView3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="十进制:" />
+                        android:text="结果值:"
+                        android:textStyle="bold"
+                        android:textSize="18sp" />
 
-                    <EditText
-                        android:id="@+id/et_10"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:clickable="true"
-                        android:ems="10"
-                        android:focusableInTouchMode="false"
-                        android:hint="Decimal"
-                        android:inputType="textPersonName" />
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/et_16"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:clickable="true"
+                            android:focusableInTouchMode="false"
+                            android:hint="十六进制 Hex">
+                        </com.google.android.material.textfield.TextInputEditText>
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/et_10"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:clickable="true"
+                            android:focusableInTouchMode="false"
+                            android:hint="十进制 Decimal">
+                        </com.google.android.material.textfield.TextInputEditText>
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/et_8"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:clickable="true"
+                            android:focusableInTouchMode="false"
+                            android:hint="八进制 Octal">
+                        </com.google.android.material.textfield.TextInputEditText>
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/et_2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:clickable="true"
+                            android:focusableInTouchMode="false"
+                            android:hint="二进制 Binary">
+                        </com.google.android.material.textfield.TextInputEditText>
+                    </com.google.android.material.textfield.TextInputLayout>
+
                 </LinearLayout>
 
-                <LinearLayout
-                    android:id="@+id/ll8"
-                    android:layout_width="match_parent"
-                    android:layout_height="42dp"
-                    android:orientation="horizontal">
+            </androidx.cardview.widget.CardView>
 
-                    <TextView
-                        android:id="@+id/textView4"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="八进制:" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
 
-                    <EditText
-                        android:id="@+id/et_8"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:clickable="true"
-                        android:ems="10"
-                        android:focusableInTouchMode="false"
-                        android:hint="Octal"
-                        android:inputType="textPersonName" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/ll2"
-                    android:layout_width="match_parent"
-                    android:layout_height="42dp"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/textView2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="二进制:" />
-
-                    <EditText
-                        android:id="@+id/et_2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:clickable="true"
-                        android:ems="10"
-                        android:focusableInTouchMode="false"
-                        android:hint="Binary"
-                        android:inputType="textPersonName" />
-                </LinearLayout>
-
-            </LinearLayout>
-
-        </androidx.cardview.widget.CardView>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -239,7 +221,6 @@
             <TableLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/ll16"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentBottom="true"
@@ -259,6 +240,7 @@
                         android:layout_height="wrap_content"
                         android:enabled="false"
                         android:textColor="@color/colorAccent"
+                        android:textStyle="bold"
                         android:text="A" />
 
                     <Button
@@ -267,6 +249,7 @@
                         android:layout_height="wrap_content"
                         android:enabled="false"
                         android:textColor="@color/colorAccent"
+                        android:textStyle="bold"
                         android:text="B" />
 
                     <Button
@@ -275,6 +258,7 @@
                         android:layout_height="wrap_content"
                         android:enabled="false"
                         android:textColor="@color/colorAccent"
+                        android:textStyle="bold"
                         android:text="C" />
 
                 </TableRow>
@@ -290,6 +274,7 @@
                         android:layout_height="wrap_content"
                         android:enabled="false"
                         android:textColor="@color/colorAccent"
+                        android:textStyle="bold"
                         android:text="D" />
 
                     <Button
@@ -298,6 +283,7 @@
                         android:layout_height="wrap_content"
                         android:enabled="false"
                         android:textColor="@color/colorAccent"
+                        android:textStyle="bold"
                         android:text="E" />
 
                     <Button
@@ -306,6 +292,7 @@
                         android:layout_height="wrap_content"
                         android:enabled="false"
                         android:textColor="@color/colorAccent"
+                        android:textStyle="bold"
                         android:text="F" />
 
                 </TableRow>
@@ -322,6 +309,7 @@
                         android:layout_height="wrap_content"
                         android:enabled="false"
                         android:textColor="@color/colorAccent"
+                        android:textStyle="bold"
                         android:text="1" />
 
                     <Button
@@ -330,6 +318,7 @@
                         android:layout_height="wrap_content"
                         android:enabled="false"
                         android:textColor="@color/colorAccent"
+                        android:textStyle="bold"
                         android:text="2" />
 
                     <Button
@@ -338,6 +327,7 @@
                         android:layout_height="wrap_content"
                         android:enabled="false"
                         android:textColor="@color/colorAccent"
+                        android:textStyle="bold"
                         android:text="3" />
 
                 </TableRow>
@@ -353,6 +343,7 @@
                         android:layout_height="wrap_content"
                         android:enabled="false"
                         android:textColor="@color/colorAccent"
+                        android:textStyle="bold"
                         android:text="4" />
 
                     <Button
@@ -361,6 +352,7 @@
                         android:layout_height="wrap_content"
                         android:enabled="false"
                         android:textColor="@color/colorAccent"
+                        android:textStyle="bold"
                         android:text="5" />
 
                     <Button
@@ -369,6 +361,7 @@
                         android:layout_height="wrap_content"
                         android:enabled="false"
                         android:textColor="@color/colorAccent"
+                        android:textStyle="bold"
                         android:text="6" />
 
                 </TableRow>
@@ -384,6 +377,7 @@
                         android:layout_height="wrap_content"
                         android:enabled="false"
                         android:textColor="@color/colorAccent"
+                        android:textStyle="bold"
                         android:text="7" />
 
                     <Button
@@ -392,6 +386,7 @@
                         android:layout_height="wrap_content"
                         android:enabled="false"
                         android:textColor="@color/colorAccent"
+                        android:textStyle="bold"
                         android:text="8" />
 
                     <Button
@@ -400,6 +395,7 @@
                         android:layout_height="wrap_content"
                         android:enabled="false"
                         android:textColor="@color/colorAccent"
+                        android:textStyle="bold"
                         android:text="9" />
 
                 </TableRow>
@@ -414,6 +410,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@color/colorAccent"
+                        android:textStyle="bold"
                         android:text="." />
 
                     <Button
@@ -422,6 +419,7 @@
                         android:layout_height="wrap_content"
                         android:enabled="false"
                         android:textColor="@color/colorAccent"
+                        android:textStyle="bold"
                         android:text="0" />
 
                     <Button
@@ -429,12 +427,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@color/colorAccent"
-                        android:text="&#060;---" />
+                        android:textStyle="bold"
+                        android:drawableLeft="@drawable/ic_backspace"
+                        android:text="退格"/>
                 </TableRow>
             </TableLayout>
 
         </androidx.cardview.widget.CardView>
 
-    </ScrollView>
+    </androidx.core.widget.NestedScrollView>
 
 </LinearLayout>

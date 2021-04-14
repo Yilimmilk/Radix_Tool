@@ -14,13 +14,13 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
-public class MainActivity extends WearableActivity implements CompoundButton.OnCheckedChangeListener, View.OnClickListener {
+public class MainActivity extends WearableActivity implements CompoundButton.OnCheckedChangeListener {
 
     //声明所有组件
     private RadioButton rdb2, rdb8, rdb10, rdb16;
     private EditText etText, et2, et8, et10, et16;
-    private Button btDel;
-    private Button bt1, bt2, bt3, bt4, bt5, bt6, bt7, bt8, bt9, bt0, bta, btb, btc, btd, bte, btf, btPoint;
+//    private Button btDel;
+//    private Button bt1, bt2, bt3, bt4, bt5, bt6, bt7, bt8, bt9, bt0, bta, btb, btc, btd, bte, btf, btPoint;
 
     private SharedPreferences.Editor editor;
 
@@ -42,52 +42,52 @@ public class MainActivity extends WearableActivity implements CompoundButton.OnC
         et8 = findViewById(R.id.et_8);
         et10 = findViewById(R.id.et_10);
         et16 = findViewById(R.id.et_16);
-        bt1 = findViewById(R.id.bt_1);
-        bt2 = findViewById(R.id.bt_2);
-        bt3 = findViewById(R.id.bt_3);
-        bt4 = findViewById(R.id.bt_4);
-        bt5 = findViewById(R.id.bt_5);
-        bt6 = findViewById(R.id.bt_6);
-        bt7 = findViewById(R.id.bt_7);
-        bt8 = findViewById(R.id.bt_8);
-        bt9 = findViewById(R.id.bt_9);
-        bt0 = findViewById(R.id.bt_0);
-        bta = findViewById(R.id.bt_a);
-        btb = findViewById(R.id.bt_b);
-        btc = findViewById(R.id.bt_c);
-        btd = findViewById(R.id.bt_d);
-        bte = findViewById(R.id.bt_e);
-        btf = findViewById(R.id.bt_f);
-        btPoint = findViewById(R.id.bt_point);
-        btDel = findViewById(R.id.bt_del);
+//        bt1 = findViewById(R.id.bt_1);
+//        bt2 = findViewById(R.id.bt_2);
+//        bt3 = findViewById(R.id.bt_3);
+//        bt4 = findViewById(R.id.bt_4);
+//        bt5 = findViewById(R.id.bt_5);
+//        bt6 = findViewById(R.id.bt_6);
+//        bt7 = findViewById(R.id.bt_7);
+//        bt8 = findViewById(R.id.bt_8);
+//        bt9 = findViewById(R.id.bt_9);
+//        bt0 = findViewById(R.id.bt_0);
+//        bta = findViewById(R.id.bt_a);
+//        btb = findViewById(R.id.bt_b);
+//        btc = findViewById(R.id.bt_c);
+//        btd = findViewById(R.id.bt_d);
+//        bte = findViewById(R.id.bt_e);
+//        btf = findViewById(R.id.bt_f);
+//        btPoint = findViewById(R.id.bt_point);
+//        btDel = findViewById(R.id.bt_del);
 
         rdb2.setOnCheckedChangeListener(this);
         rdb8.setOnCheckedChangeListener(this);
         rdb10.setOnCheckedChangeListener(this);
         rdb16.setOnCheckedChangeListener(this);
 
-        et2.setOnClickListener(this);
-        et8.setOnClickListener(this);
-        et10.setOnClickListener(this);
-        et16.setOnClickListener(this);
-        bt1.setOnClickListener(this);
-        bt2.setOnClickListener(this);
-        bt3.setOnClickListener(this);
-        bt4.setOnClickListener(this);
-        bt5.setOnClickListener(this);
-        bt6.setOnClickListener(this);
-        bt7.setOnClickListener(this);
-        bt8.setOnClickListener(this);
-        bt9.setOnClickListener(this);
-        bt0.setOnClickListener(this);
-        bta.setOnClickListener(this);
-        btb.setOnClickListener(this);
-        btc.setOnClickListener(this);
-        btd.setOnClickListener(this);
-        bte.setOnClickListener(this);
-        btf.setOnClickListener(this);
-        btPoint.setOnClickListener(this);
-        btDel.setOnClickListener(this);
+//        et2.setOnClickListener(this);
+//        et8.setOnClickListener(this);
+//        et10.setOnClickListener(this);
+//        et16.setOnClickListener(this);
+//        bt1.setOnClickListener(this);
+//        bt2.setOnClickListener(this);
+//        bt3.setOnClickListener(this);
+//        bt4.setOnClickListener(this);
+//        bt5.setOnClickListener(this);
+//        bt6.setOnClickListener(this);
+//        bt7.setOnClickListener(this);
+//        bt8.setOnClickListener(this);
+//        bt9.setOnClickListener(this);
+//        bt0.setOnClickListener(this);
+//        bta.setOnClickListener(this);
+//        btb.setOnClickListener(this);
+//        btc.setOnClickListener(this);
+//        btd.setOnClickListener(this);
+//        bte.setOnClickListener(this);
+//        btf.setOnClickListener(this);
+//        btPoint.setOnClickListener(this);
+//        btDel.setOnClickListener(this);
 
         //添加文本框变化监听
         etText.addTextChangedListener(new TextWatcher() {
@@ -110,31 +110,31 @@ public class MainActivity extends WearableActivity implements CompoundButton.OnC
         });
 
         //长按删除全部
-        btDel.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View view) {
-                etText.setText("");
-                return false;
-            }
-        });
+//        btDel.setOnLongClickListener(new View.OnLongClickListener() {
+//            @Override
+//            public boolean onLongClick(View view) {
+//                etText.setText("");
+//                return false;
+//            }
+//        });
 
         //默认十进制状态下所有按键的激活状态
-        bt0.setEnabled(true);
-        bt1.setEnabled(true);
-        bt2.setEnabled(true);
-        bt3.setEnabled(true);
-        bt4.setEnabled(true);
-        bt5.setEnabled(true);
-        bt6.setEnabled(true);
-        bt7.setEnabled(true);
-        bt8.setEnabled(true);
-        bt9.setEnabled(true);
-        bta.setEnabled(false);
-        btb.setEnabled(false);
-        btc.setEnabled(false);
-        btd.setEnabled(false);
-        bte.setEnabled(false);
-        btf.setEnabled(false);
+//        bt0.setEnabled(true);
+//        bt1.setEnabled(true);
+//        bt2.setEnabled(true);
+//        bt3.setEnabled(true);
+//        bt4.setEnabled(true);
+//        bt5.setEnabled(true);
+//        bt6.setEnabled(true);
+//        bt7.setEnabled(true);
+//        bt8.setEnabled(true);
+//        bt9.setEnabled(true);
+//        bta.setEnabled(false);
+//        btb.setEnabled(false);
+//        btc.setEnabled(false);
+//        btd.setEnabled(false);
+//        bte.setEnabled(false);
+//        btf.setEnabled(false);
 
         //SharedPreference用来储存设置
         SharedPreferences settings = getSharedPreferences("setting", MODE_PRIVATE);
@@ -219,22 +219,22 @@ public class MainActivity extends WearableActivity implements CompoundButton.OnC
                     String number = etText.getText().toString();
                     initRadix(number);
 
-                    bt0.setEnabled(true);
-                    bt1.setEnabled(true);
-                    bt2.setEnabled(false);
-                    bt3.setEnabled(false);
-                    bt4.setEnabled(false);
-                    bt5.setEnabled(false);
-                    bt6.setEnabled(false);
-                    bt7.setEnabled(false);
-                    bt8.setEnabled(false);
-                    bt9.setEnabled(false);
-                    bta.setEnabled(false);
-                    btb.setEnabled(false);
-                    btc.setEnabled(false);
-                    btd.setEnabled(false);
-                    bte.setEnabled(false);
-                    btf.setEnabled(false);
+//                    bt0.setEnabled(true);
+//                    bt1.setEnabled(true);
+//                    bt2.setEnabled(false);
+//                    bt3.setEnabled(false);
+//                    bt4.setEnabled(false);
+//                    bt5.setEnabled(false);
+//                    bt6.setEnabled(false);
+//                    bt7.setEnabled(false);
+//                    bt8.setEnabled(false);
+//                    bt9.setEnabled(false);
+//                    bta.setEnabled(false);
+//                    btb.setEnabled(false);
+//                    btc.setEnabled(false);
+//                    btd.setEnabled(false);
+//                    bte.setEnabled(false);
+//                    btf.setEnabled(false);
 
 //                    et2.setText("");
 //                    et8.setText("");
@@ -252,22 +252,22 @@ public class MainActivity extends WearableActivity implements CompoundButton.OnC
                     String number = etText.getText().toString();
                     initRadix(number);
 
-                    bt0.setEnabled(true);
-                    bt1.setEnabled(true);
-                    bt2.setEnabled(true);
-                    bt3.setEnabled(true);
-                    bt4.setEnabled(true);
-                    bt5.setEnabled(true);
-                    bt6.setEnabled(true);
-                    bt7.setEnabled(true);
-                    bt8.setEnabled(false);
-                    bt9.setEnabled(false);
-                    bta.setEnabled(false);
-                    btb.setEnabled(false);
-                    btc.setEnabled(false);
-                    btd.setEnabled(false);
-                    bte.setEnabled(false);
-                    btf.setEnabled(false);
+//                    bt0.setEnabled(true);
+//                    bt1.setEnabled(true);
+//                    bt2.setEnabled(true);
+//                    bt3.setEnabled(true);
+//                    bt4.setEnabled(true);
+//                    bt5.setEnabled(true);
+//                    bt6.setEnabled(true);
+//                    bt7.setEnabled(true);
+//                    bt8.setEnabled(false);
+//                    bt9.setEnabled(false);
+//                    bta.setEnabled(false);
+//                    btb.setEnabled(false);
+//                    btc.setEnabled(false);
+//                    btd.setEnabled(false);
+//                    bte.setEnabled(false);
+//                    btf.setEnabled(false);
 
 //                    et2.setText("");
 //                    et8.setText("");
@@ -285,22 +285,22 @@ public class MainActivity extends WearableActivity implements CompoundButton.OnC
                     String number = etText.getText().toString();
                     initRadix(number);
 
-                    bt0.setEnabled(true);
-                    bt1.setEnabled(true);
-                    bt2.setEnabled(true);
-                    bt3.setEnabled(true);
-                    bt4.setEnabled(true);
-                    bt5.setEnabled(true);
-                    bt6.setEnabled(true);
-                    bt7.setEnabled(true);
-                    bt8.setEnabled(true);
-                    bt9.setEnabled(true);
-                    bta.setEnabled(false);
-                    btb.setEnabled(false);
-                    btc.setEnabled(false);
-                    btd.setEnabled(false);
-                    bte.setEnabled(false);
-                    btf.setEnabled(false);
+//                    bt0.setEnabled(true);
+//                    bt1.setEnabled(true);
+//                    bt2.setEnabled(true);
+//                    bt3.setEnabled(true);
+//                    bt4.setEnabled(true);
+//                    bt5.setEnabled(true);
+//                    bt6.setEnabled(true);
+//                    bt7.setEnabled(true);
+//                    bt8.setEnabled(true);
+//                    bt9.setEnabled(true);
+//                    bta.setEnabled(false);
+//                    btb.setEnabled(false);
+//                    btc.setEnabled(false);
+//                    btd.setEnabled(false);
+//                    bte.setEnabled(false);
+//                    btf.setEnabled(false);
 
 //                    et2.setText("");
 //                    et8.setText("");
@@ -318,22 +318,22 @@ public class MainActivity extends WearableActivity implements CompoundButton.OnC
                     String number = etText.getText().toString();
                     initRadix(number);
 
-                    bt0.setEnabled(true);
-                    bt1.setEnabled(true);
-                    bt2.setEnabled(true);
-                    bt3.setEnabled(true);
-                    bt4.setEnabled(true);
-                    bt5.setEnabled(true);
-                    bt6.setEnabled(true);
-                    bt7.setEnabled(true);
-                    bt8.setEnabled(true);
-                    bt9.setEnabled(true);
-                    bta.setEnabled(true);
-                    btb.setEnabled(true);
-                    btc.setEnabled(true);
-                    btd.setEnabled(true);
-                    bte.setEnabled(true);
-                    btf.setEnabled(true);
+//                    bt0.setEnabled(true);
+//                    bt1.setEnabled(true);
+//                    bt2.setEnabled(true);
+//                    bt3.setEnabled(true);
+//                    bt4.setEnabled(true);
+//                    bt5.setEnabled(true);
+//                    bt6.setEnabled(true);
+//                    bt7.setEnabled(true);
+//                    bt8.setEnabled(true);
+//                    bt9.setEnabled(true);
+//                    bta.setEnabled(true);
+//                    btb.setEnabled(true);
+//                    btc.setEnabled(true);
+//                    btd.setEnabled(true);
+//                    bte.setEnabled(true);
+//                    btf.setEnabled(true);
 
 //                    et2.setText("");
 //                    et8.setText("");
@@ -348,86 +348,86 @@ public class MainActivity extends WearableActivity implements CompoundButton.OnC
     }
 
     //文本框和按钮设置监听
-    @Override
-    public void onClick(View view) {
-        switch (view.getId()) {
-
-            case R.id.bt_point:
-                etText.setText(etText.getText() + ".");
-                break;
-
-            case R.id.bt_del:
-                if (!TextUtils.isEmpty(etText.getText().toString())) {
-                    String str = etText.getText().toString();
-                    etText.setText(str.substring(0, str.length() - 1));
-                }
-                break;
-
-            case R.id.bt_0:
-                etText.setText(etText.getText() + "0");
-                break;
-
-            case R.id.bt_1:
-                etText.setText(etText.getText() + "1");
-                break;
-
-            case R.id.bt_2:
-                etText.setText(etText.getText() + "2");
-                break;
-
-            case R.id.bt_3:
-                etText.setText(etText.getText() + "3");
-                break;
-
-            case R.id.bt_4:
-                etText.setText(etText.getText() + "4");
-                break;
-
-            case R.id.bt_5:
-                etText.setText(etText.getText() + "5");
-                break;
-
-            case R.id.bt_6:
-                etText.setText(etText.getText() + "6");
-                break;
-
-            case R.id.bt_7:
-                etText.setText(etText.getText() + "7");
-                break;
-
-            case R.id.bt_8:
-                etText.setText(etText.getText() + "8");
-                break;
-
-            case R.id.bt_9:
-                etText.setText(etText.getText() + "9");
-                break;
-
-            case R.id.bt_a:
-                etText.setText(etText.getText() + "A");
-                break;
-
-            case R.id.bt_b:
-                etText.setText(etText.getText() + "B");
-                break;
-
-            case R.id.bt_c:
-                etText.setText(etText.getText() + "C");
-                break;
-
-            case R.id.bt_d:
-                etText.setText(etText.getText() + "D");
-                break;
-
-            case R.id.bt_e:
-                etText.setText(etText.getText() + "E");
-                break;
-
-            case R.id.bt_f:
-                etText.setText(etText.getText() + "F");
-                break;
-        }
-    }
+//    @Override
+//    public void onClick(View view) {
+//        switch (view.getId()) {
+//
+//            case R.id.bt_point:
+//                etText.setText(etText.getText() + ".");
+//                break;
+//
+//            case R.id.bt_del:
+//                if (!TextUtils.isEmpty(etText.getText().toString())) {
+//                    String str = etText.getText().toString();
+//                    etText.setText(str.substring(0, str.length() - 1));
+//                }
+//                break;
+//
+//            case R.id.bt_0:
+//                etText.setText(etText.getText() + "0");
+//                break;
+//
+//            case R.id.bt_1:
+//                etText.setText(etText.getText() + "1");
+//                break;
+//
+//            case R.id.bt_2:
+//                etText.setText(etText.getText() + "2");
+//                break;
+//
+//            case R.id.bt_3:
+//                etText.setText(etText.getText() + "3");
+//                break;
+//
+//            case R.id.bt_4:
+//                etText.setText(etText.getText() + "4");
+//                break;
+//
+//            case R.id.bt_5:
+//                etText.setText(etText.getText() + "5");
+//                break;
+//
+//            case R.id.bt_6:
+//                etText.setText(etText.getText() + "6");
+//                break;
+//
+//            case R.id.bt_7:
+//                etText.setText(etText.getText() + "7");
+//                break;
+//
+//            case R.id.bt_8:
+//                etText.setText(etText.getText() + "8");
+//                break;
+//
+//            case R.id.bt_9:
+//                etText.setText(etText.getText() + "9");
+//                break;
+//
+//            case R.id.bt_a:
+//                etText.setText(etText.getText() + "A");
+//                break;
+//
+//            case R.id.bt_b:
+//                etText.setText(etText.getText() + "B");
+//                break;
+//
+//            case R.id.bt_c:
+//                etText.setText(etText.getText() + "C");
+//                break;
+//
+//            case R.id.bt_d:
+//                etText.setText(etText.getText() + "D");
+//                break;
+//
+//            case R.id.bt_e:
+//                etText.setText(etText.getText() + "E");
+//                break;
+//
+//            case R.id.bt_f:
+//                etText.setText(etText.getText() + "F");
+//                break;
+//        }
+//    }
 
 //    @Overrideprotected void onCreate(Bundle savedInstanceState) {
 //        super.onCreate(savedInstanceState);
